@@ -1,0 +1,37 @@
+ void playGameNumber() {
+        cout << "Guess a number between 1 and ";
+        switch (maxTries) {
+            case 5:
+                cout << "10." << endl;
+                break;
+            case 4:
+                cout << "25." << endl;
+                break;
+            case 3:
+                cout << "40." << endl;
+                break;
+        }
+        while (numTries > 0) {
+            int guess;
+            cout << "You have " << numTries << " tries left. Enter your guess: ";
+            cin >> guess;
+            if (guess == secretNumber) {
+                cout << "You win!" << endl;
+                if (numTries < highScoreNumber || highScoreNumber == 0) {
+                    highScoreNumber = numTries;
+                    cout << "New high score: " << highScoreNumber << " tries." << endl;
+                }
+                break;
+            }
+            else if (guess < secretNumber) {
+                cout << "Wrong! The secret number is higher." << endl;
+            }
+            else {
+                cout << "Wrong! The secret number is lower." << endl;
+            }
+            numTries--;
+        }
+        if (numTries == 0) {
+            cout << "You lose! The secret number was " << secretNumber << "." << endl;
+        }
+    }
