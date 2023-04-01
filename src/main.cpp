@@ -155,6 +155,13 @@ public:
             cout << "===> ";
             cin >> choice;
 
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid option. Please enter a number between 1 and 5." << endl;
+                continue;
+            }
+            
             switch (choice) {
                 case 1: //Easy
                     setDifficultyNumber(1);
@@ -302,6 +309,13 @@ public:
             cout << "4. Return to main menu" << endl;
             cout << "===> ";
             cin >> choice;
+
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid option. Please enter a number between 1 and 5." << endl;
+                continue;
+            }
 
                 switch (choice) {
                     case 1: //Easy
