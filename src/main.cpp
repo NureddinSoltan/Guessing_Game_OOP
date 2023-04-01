@@ -1,9 +1,14 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
 
 using namespace std;
-
+/**
+  GuessingGame{}
+  This is a class named GuessingGame(), which the main class of this game.
+  It has several fields, and methods.
+ */
 class GuessingGame {
 private:
     int secretNumber;
@@ -17,6 +22,7 @@ private:
     int noOfGuessingNumber;
     int noOfGuessingAlphabet;
     string playerName;
+    bool isHint;
 
 public:
     GuessingGame() {
@@ -25,28 +31,33 @@ public:
         numTries = 0;
         highScoreNumber = 0;
         highScoreAlphabet =0;
-        playerName = "";
         noOfGuessingNumber =0;
         noOfGuessingAlphabet =0;
         isLoserAlphabet =0;
         isLoserNumber =0;
     }
-
+    /**
+    setDifficultyNumber()
+    Sets the bound for the random numbers generation.
+    generates a random number between 1 and the upper bound using
+    the 'NumberGuessing' class.
+    @param level can be a number (15,25,40)
+    */
     void setDifficultyNumber(int level) {
         switch (level) {
             case 1: // Easy
-                secretNumber = rand() % 10 + 1;
-                cout<<secretNumber<<endl;
+                secretNumber = rand() % 15 + 1;
+                cout<<secretNumber<<endl;//🚀
                 maxTries = 5;
                 break;
             case 2: // Medium
                 secretNumber = rand() % 25 + 1;
-                cout<<secretNumber<<endl;
+                cout<<secretNumber<<endl;//🚀
                 maxTries = 4;
                 break;
             case 3: // Hard
                 secretNumber = rand() % 40 + 1;
-                cout<<secretNumber<<endl;
+                cout<<secretNumber<<endl; //🚀
                 maxTries = 3;
                 break;
             default:
@@ -55,59 +66,79 @@ public:
         }
         numTries = maxTries;
     }
+    /**
+    playGameNumber()
+    Sets the bound for the random numbers generation.
+    It checks if the user's input matches the randomNumber variable, and if so,
+    prints a message to the console indicating that the user won.
+    If the user's input is higher than the randomNumber, it decreases the number
+    of guesses remaining and prints a message indicating that the secret number is higher.
+    If the input is lower, it does the same but prints a message indicating that
+    the secret number is low
+    @param level can be a number (15,25,40)
+    */
     void playGameNumber() {
         noOfGuessingNumber =0;
-        cout << "Guess a number between 1 and ";
+        cout << "Guess a number from 1 to ";
         switch (maxTries) {
             case 5:
-                cout << "10." << endl;
+                cout << "15.  ";
                 break;
             case 4:
-                cout << "25." << endl;
+                cout << "25.  ";
                 break;
             case 3:
-                cout << "40." << endl;
+                cout << "40.  ";
                 break;
         }
+        cout << numTries << " Chances left "<<endl;
         while (numTries > 0) {
             int guess;
-            cout << "You have " << numTries << " tries left. "<<endl;
             cout << "Chance : #"<< numTries << endl;
-            cout << "Enter your guess: " << endl;
+            cout << "Enter your guess: ";
             if (!(cin >> guess)) { // Check if input is a number
-                cout << "Invalid option!" << endl;
+                cout << "Invalid option! Please enter a valid number." << endl;
                 cin.clear(); // Clear the error flags
                 cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard the input buffer
                 continue;
             }
             if (guess == secretNumber) {
-                cout << guess << " Is a correct guess,  congrats amigos ✅" << endl;
+                cout << guess << " Is a correct guess, congrats amigos ✅" << endl;
                 cout << "You win! after "<<numTries <<" Tries 🥳" << endl;
                 noOfGuessingNumber++;
                 if (noOfGuessingNumber < highScoreNumber || highScoreNumber == 0) {
                     highScoreNumber = noOfGuessingNumber;
-                    cout << "New high score for number game: " << highScoreNumber << endl;
+                    cout << "New high score for Numbers Game:" << "("<< highScoreNumber <<")🏁"<< endl;
                 }
+                cout << ""<< endl;
                 break;
             }
             else if (guess < secretNumber) {
-                cout << "Wrong! The secret number Is higher ❌." << endl;
-                cout << "Chance : #"<< numTries << endl;
+                if (isHint) {
+                    cout << "WRONG! The secret number is higher ❌." << endl;
+                }
                 noOfGuessingNumber++;
-                cout << "The number of guessing"  << endl;
             }
             else {
-                cout << "Wrong! The secret number Is Lower ❌." << endl;
-                cout << "Chance : #"<< numTries << endl;
+                if (isHint) {
+                    cout << "WRONG! The secret number is Lower ❌." << endl;
+                }
                 noOfGuessingNumber++;
             }
             numTries--;
         }
         if (numTries == 0) {
             cout << "You lose! The secret number was " << secretNumber << "." << endl;
+            cout << ""<< endl;
             isLoserNumber = true;
         }
     }
+    /**
+    NumberGuessing()
+    sets the game parameters for level.
+    hint availability, and the upper bound of the range.
+    It then prints game instructions to the console.
+    */
     void NumberGuessing(){
         int choice;
         do {
@@ -124,14 +155,20 @@ public:
             switch (choice) {
                 case 1: //Easy
                     setDifficultyNumber(1);
+                    Instructions("Numbers","NUMBER", 5,"Easy");
+                    isHint = true;
                     playGameNumber();
                     break;
                 case 2: //Medium
                     setDifficultyNumber(2);
+                    Instructions("Numbers","NUMBER", 4,"Medium");
+                    isHint = false;
                     playGameNumber();
                     break;
                 case 3: //Hard
                     setDifficultyNumber(3);
+                    Instructions("Numbers","NUMBER", 3,"Hard");
+                    isHint = false;
                     playGameNumber();
                     break;
                 case 4:
@@ -143,7 +180,6 @@ public:
         } while (true);
 
     }
-
 
     void setDifficultyAlphabet(int level) {
         switch (level) {
@@ -170,41 +206,47 @@ public:
     }
     void playGameAlphabet() {
         noOfGuessingAlphabet =0;
-        cout << "Guess an Alphabet between a and ";
+        cout << "Guess an Alphabet from 'a' to ";
         switch (maxTries) {
             case 5:
-                cout << "j." << endl;
+                cout << "'j'. ";
                 break;
             case 4:
-                cout << "j." << endl;
+                cout << "'q'. ";
                 break;
             case 3:
-                cout << "z." << endl;
+                cout << "'z'. ";
                 break;
         }
+        cout << numTries << " Chances left "<<endl;
         while (numTries > 0) {
             char guess;
-            cout << "You have " << numTries << " tries left. Enter your guess: ";
+            cout << "Chance : #"<< numTries << endl;
+            cout << "Enter your guess: ";
             cin >> guess;
             // Convert user guess to uppercase if it's a letter
             if (isalpha(guess)) {
                 guess = toupper(guess);
                 if (guess == secretAlphabet) {
-                    cout << guess << " Is a correct guess,  congrats amigos ✅" << endl;
+                    cout << guess << " is a correct guess,  congrats amigos ✅" << endl;
                     cout << "You win! after "<<numTries <<" Tries 🥳" << endl;
                     noOfGuessingAlphabet++;
                     if (noOfGuessingAlphabet < highScoreAlphabet || highScoreAlphabet == 0) {
                         highScoreAlphabet = noOfGuessingAlphabet;
-                        cout << "New high score for alphabet game: " << highScoreAlphabet << endl;
+                        cout << "New high score for Alphabets Game: " << "("<< highScoreAlphabet <<")🏁"<< endl;
                     }
+                    cout << ""<< endl;
                     break;
-                } else if (guess < secretAlphabet) {
-                    cout << "Wrong! The secret alphabet Is higher ❌." << endl;
-                    cout << "Chance : #"<< numTries << endl;
+                }
+                else if (guess < secretAlphabet) {
+                    if (isHint) {
+                        cout << "WRONG! The secret alphabet is higher ❌." << endl;
+                    }
                     noOfGuessingAlphabet++;
                 } else {
-                    cout << "Wrong! The secret alphabet Is Lower ❌." << endl;
-                    cout << "Chance : #"<< numTries << endl;
+                    if (isHint) {
+                        cout << "WRONG! The secret alphabet is Lower ❌." << endl;
+                    }
                     noOfGuessingAlphabet++;
                 }
                 numTries--;
@@ -213,8 +255,10 @@ public:
             }
         }
         if (numTries == 0) {
-            numTries == isLoserAlphabet;
             cout << "You lose! The secret Alphabet was " << secretAlphabet << "." << endl;
+            cout << ""<< endl;
+            isLoserAlphabet = true;
+
         }
     }
     void AlphabetGuessing() {
@@ -233,14 +277,20 @@ public:
                 switch (choice) {
                     case 1: //Easy
                         setDifficultyAlphabet(1);
+                        Instructions("Alphabets","ALPHABET", 5,"Easy");
+                        isHint = true;
                         playGameAlphabet();
                         break;
                     case 2: //Medium
                         setDifficultyAlphabet(2);
+                        Instructions("Alphabets","ALPHABET", 4,"Medium");
+                        isHint = false;
                         playGameAlphabet();
                         break;
                     case 3: //Hard
                         setDifficultyAlphabet(3);
+                        Instructions("Alphabets","ALPHABET", 3,"Hard");
+                        isHint = false;
                         playGameAlphabet();
                         break;
                     case 4:
@@ -253,6 +303,19 @@ public:
 
         }
 
+    void Instructions(string type,string type1, int chances, string level) {
+        cout<< R"(
+Guess the )" + type + R"( :
+------------------------------------------
+Instructions:
+1. Guess the )" + type + R"( based on the given range.
+2. You are allowed to make one guess at a time.
+3. Each game has )" + to_string(chances) + R"( chances to guess the SECRET )"+ type1 + R"(.
+4. Once you have used all your chances, you lose the game.
+
+Good Luck!
+)" + level + R"( :
+)";}
 
     void viewHighScoreNumber(){
         if (noOfGuessingNumber == 0){
@@ -266,7 +329,6 @@ public:
             cout<< "*Don't forget to drink milk before sleeping" <<endl;
         }
     }
-
     void viewHighScoreAlphabet() {
         if(noOfGuessingAlphabet ==0){
             cout << "Guessing Alphabets is not played yet" << endl;
@@ -291,6 +353,7 @@ public:
 
 int main() {
     srand(time(NULL)); // seed for random number generator
+//    srand(time(nullptr)); // seed for random number generator
     GuessingGame game;
     int choice;
     do {
@@ -322,7 +385,7 @@ int main() {
                 game.viewCredits();
                 break;
             case 5: // Exit Game
-                cout << "Thanks for playing!" << endl;
+                cout << "Thank you for playing, we will wait for you again!" << endl;
                 return 0;
             default:
                 cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
