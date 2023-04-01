@@ -406,7 +406,7 @@ Good Luck!
 
 int main() {
     srand(time(NULL)); // seed for random number generator
-//    srand(time(nullptr)); // seed for random number generator
+//    srand(time(nullptr)); // seed for random number generator 🚀
     GuessingGame game;
     int choice;
     do {
@@ -421,6 +421,14 @@ int main() {
         cout << "" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid option. Please enter a number between 1 and 5." << endl;
+            continue;
+        }
+
 
         switch (choice) {
             case 1: // Guessing Numbers
