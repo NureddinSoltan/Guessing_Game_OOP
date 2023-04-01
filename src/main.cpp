@@ -4,11 +4,11 @@
 #include <string>
 
 using namespace std;
-/**
-  GuessingGame{}
-  This is a class named GuessingGame(), which the main class of this game.
-  It has several fields, and methods.
- */
+    /**
+    GuessingGame{}
+    This is a class named GuessingGame(), which the main class of this game.
+    It has several fields, and methods.
+    */
 class GuessingGame {
 private:
     int secretNumber;
@@ -36,6 +36,7 @@ public:
         isLoserAlphabet =0;
         isLoserNumber =0;
     }
+
     /**
     setDifficultyNumber()
     Sets the bound for the random numbers generation.
@@ -66,16 +67,16 @@ public:
         }
         numTries = maxTries;
     }
+
     /**
     playGameNumber()
     Sets the bound for the random numbers generation.
     It checks if the user's input matches the randomNumber variable, and if so,
     prints a message to the console indicating that the user won.
     If the user's input is higher than the randomNumber, it decreases the number
-    of guesses remaining and prints a message indicating that the secret number is higher.
-    If the input is lower, it does the same but prints a message indicating that
-    the secret number is low
-    @param level can be a number (15,25,40)
+    of guesses remaining and prints a message indicating that the secret number is higher or
+    the secret number is low and if there is a hint it will display this.
+    if the user enter something rather than the number it will display "Invalid option!"
     */
     void playGameNumber() {
         noOfGuessingNumber =0;
@@ -133,11 +134,13 @@ public:
             isLoserNumber = true;
         }
     }
+
     /**
     NumberGuessing()
-    sets the game parameters for level.
+    display the start menu, sets the game parameters for level.
     hint availability, and the upper bound of the range.
-    It then prints game instructions to the console.
+    It then prints game instructions to the console, and
+    include the playGameNumber() method
     */
     void NumberGuessing(){
         int choice;
@@ -181,6 +184,13 @@ public:
 
     }
 
+    /**
+    setDifficultyAlphabet()
+    Sets the bound for the random Alphabet generation.
+    generates a random alphabet between 1 and the upper bound using
+    the 'AlphabetGuessing' class.
+    @param level can be a number (j,q,z)
+    */
     void setDifficultyAlphabet(int level) {
         switch (level) {
             case 1: // Easy
@@ -204,6 +214,17 @@ public:
         }
         numTries = maxTries;
     }
+
+    /**
+    playGameAlphabet()
+    Sets the bound for the random Alphabet generation.
+    It checks if the user's input matches the randomAlphabet variable, and if so,
+    prints a message to the console indicating that the user won.
+    If the user's input is higher than the randomAlphabet, it decreases the number
+    of guesses remaining and prints a message indicating that the secret alphabet is higher or
+    the secret alphabet is low and if there is a hint it will display this.
+    if the user enter something rather than the alphabet it will display "Invalid option!"
+    */
     void playGameAlphabet() {
         noOfGuessingAlphabet =0;
         cout << "Guess an Alphabet from 'a' to ";
@@ -261,6 +282,14 @@ public:
 
         }
     }
+
+    /**
+    AlphabetGuessing()
+    display the start menu, sets the game parameters for level.
+    hint availability, and the upper bound of the range.
+    It then prints game instructions to the console, and
+    include the playGameAlphabet() method
+    */
     void AlphabetGuessing() {
             int choice;
         do {
@@ -303,6 +332,15 @@ public:
 
         }
 
+    /**
+    Instructions()
+    creates a message that gives instructions to the player about how to play the
+    game.
+    @param type    can be String (Numbers, Alphabets)
+    @param type1    can be String (Number, Alphabet)
+    @param chances can be an integer from (5, 4, 3)
+    @param level   can be a String (easy, medium, hard)
+    **/
     void Instructions(string type,string type1, int chances, string level) {
         cout<< R"(
 Guess the )" + type + R"( :
@@ -317,6 +355,11 @@ Good Luck!
 )" + level + R"( :
 )";}
 
+    /**
+    viewHighScoreNumber()
+    A function to get report of highScore for each model game,
+    and prints a message in number.
+    */
     void viewHighScoreNumber(){
         if (noOfGuessingNumber == 0){
             cout << "Guessing Numbers is not played yet" <<endl;
@@ -329,6 +372,12 @@ Good Luck!
             cout<< "*Don't forget to drink milk before sleeping" <<endl;
         }
     }
+
+    /**
+    viewHighScoreAlphabet()
+    A function to get report of highScore for each model game,
+    and prints a message in alphabets.
+    */
     void viewHighScoreAlphabet() {
         if(noOfGuessingAlphabet ==0){
             cout << "Guessing Alphabets is not played yet" << endl;
@@ -343,6 +392,10 @@ Good Luck!
         }
     }
 
+    /**
+    * printCredits()
+    * A method prints the credits
+    */
     void viewCredits() {
         cout << "This Guessing Game was created by ." << endl;
         cout << "Name : Noureldien Soltan Abdelrahman Ahmed ID : 210209980 Department : SE" << endl;
@@ -368,7 +421,6 @@ int main() {
         cout << "" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
-
 
         switch (choice) {
             case 1: // Guessing Numbers
