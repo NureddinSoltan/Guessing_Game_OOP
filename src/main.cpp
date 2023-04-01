@@ -158,10 +158,10 @@ public:
             if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid option. Please enter a number between 1 and 5." << endl;
+                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
                 continue;
             }
-            
+
             switch (choice) {
                 case 1: //Easy
                     setDifficultyNumber(1);
@@ -184,7 +184,7 @@ public:
                 case 4:
                     return ;
                 default:
-                    cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+                    cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
                     break;
             }
         } while (true);
@@ -313,7 +313,7 @@ public:
             if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid option. Please enter a number between 1 and 5." << endl;
+                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
                 continue;
             }
 
@@ -339,7 +339,7 @@ public:
                     case 4:
                         return ;
                     default:
-                        cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+                        cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
                         break;
                 }
             } while (true);
