@@ -104,32 +104,32 @@ public:
                 continue;
             }
             if (guess == secretNumber) {
-                cout << guess << " Is a correct guess, congrats amigos ✅" << endl;
-                cout << "You win! after "<<numTries <<" Tries 🥳" << endl;
+                cout << guess << " Is a correct guess, congrats amigos \U00002705" << endl;
+                cout << "You win! after "<<numTries <<" Tries \U0001F973" << endl;
                 noOfGuessingNumber++;
                 if (noOfGuessingNumber < highScoreNumber || highScoreNumber == 0) {
                     highScoreNumber = noOfGuessingNumber;
-                    cout << "New high score for Numbers Game:" << "("<< highScoreNumber <<")🏁"<< endl;
+                    cout << "New high score for Numbers Game:" << "("<< highScoreNumber <<")\U0001F3C1"<< endl;
                 }
                 cout << ""<< endl;
                 break;
             }
             else if (guess < secretNumber) {
                 if (isHint) {
-                    cout << "WRONG! The secret number is higher ❌." << endl;
+                    cout << "WRONG! The secret number is higher \U0000274C." << endl;
                 }
                 noOfGuessingNumber++;
             }
             else {
                 if (isHint) {
-                    cout << "WRONG! The secret number is Lower ❌." << endl;
+                    cout << "WRONG! The secret number is Lower \U0000274C." << endl;
                 }
                 noOfGuessingNumber++;
             }
             numTries--;
         }
         if (numTries == 0) {
-            cout << "You lose! The secret number was " << secretNumber << "." << endl;
+            cout << "You lost! The secret number was " << secretNumber << "\U0001F979" << endl;
             cout << ""<< endl;
             isLoserNumber = true;
         }
@@ -249,24 +249,24 @@ public:
             if (isalpha(guess)) {
                 guess = toupper(guess);
                 if (guess == secretAlphabet) {
-                    cout << guess << " is a correct guess,  congrats amigos ✅" << endl;
-                    cout << "You win! after "<<numTries <<" Tries 🥳" << endl;
+                    cout << guess << " is a correct guess,  congrats amigos \U00002705" << endl;
+                    cout << "You win! after "<<numTries <<" Tries \U0001F973" << endl;
                     noOfGuessingAlphabet++;
                     if (noOfGuessingAlphabet < highScoreAlphabet || highScoreAlphabet == 0) {
                         highScoreAlphabet = noOfGuessingAlphabet;
-                        cout << "New high score for Alphabets Game: " << "("<< highScoreAlphabet <<")🏁"<< endl;
+                        cout << "New high score for Alphabets Game: " << "("<< highScoreAlphabet <<")\U0001F3C1"<< endl;
                     }
                     cout << ""<< endl;
                     break;
                 }
                 else if (guess < secretAlphabet) {
                     if (isHint) {
-                        cout << "WRONG! The secret alphabet is higher ❌." << endl;
+                        cout << "WRONG! The secret alphabet is higher \U0000274C." << endl;
                     }
                     noOfGuessingAlphabet++;
                 } else {
                     if (isHint) {
-                        cout << "WRONG! The secret alphabet is Lower ❌." << endl;
+                        cout << "WRONG! The secret alphabet is Lower \U0000274C." << endl;
                     }
                     noOfGuessingAlphabet++;
                 }
@@ -276,7 +276,7 @@ public:
             }
         }
         if (numTries == 0) {
-            cout << "You lose! The secret Alphabet was " << secretAlphabet << "." << endl;
+            cout << "You lost! The secret Alphabet was " << secretAlphabet << "\U0001F979" << endl;
             cout << ""<< endl;
             isLoserAlphabet = true;
 
