@@ -203,17 +203,17 @@ public:
         switch (level) {
             case 1: // Easy
                 secretAlphabet = 'A' + rand() % 10;
-//                cout<<secretAlphabet<<endl;//🚀
+                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 5;
                 break;
             case 2: // Medium
                 secretAlphabet = 'A' + rand() % 17;
-//                cout<<secretAlphabet<<endl;//🚀
+                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 4;
                 break;
             case 3: // Hard
                 secretAlphabet = 'A' + rand() % 26;
-//                cout<<secretAlphabet<<endl;//🚀
+                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 3;
                 break;
             default:
