@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <limits>
 
 using namespace std;
     /**
@@ -155,29 +156,29 @@ public:
             cout << "===> ";
             cin >> choice;
 
-//            if (cin.fail()) {//Check if the input isn't a number
-//                cin.clear(); //clears the input buffer
-//                cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
-//                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
-//                continue;
-//            }
+            if (cin.fail()) {//Check if the input isn't a number
+                cin.clear(); //clears the input buffer
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
+                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
+                continue;
+            }
 
             switch (choice) {
                 case 1: //Easy
                     setDifficultyNumber(1);
-                    Instructions("Numbers","NUMBER", 5,"Easy");
+                    Instructions("Numbers","NUMBER", "5","Easy");
                     isHint = true;
                     playGameNumber();
                     break;
                 case 2: //Medium
                     setDifficultyNumber(2);
-                    Instructions("Numbers","NUMBER", 4,"Medium");
+                    Instructions("Numbers","NUMBER", "4","Medium");
                     isHint = false;
                     playGameNumber();
                     break;
                 case 3: //Hard
                     setDifficultyNumber(3);
-                    Instructions("Numbers","NUMBER", 3,"Hard");
+                    Instructions("Numbers","NUMBER", "3","Hard");
                     isHint = false;
                     playGameNumber();
                     break;
@@ -309,29 +310,29 @@ public:
             cout << "===> ";
             cin >> choice;
 
-//            if (cin.fail()) { //Check if the input isn't an alphabet
-//                cin.clear(); //clears the input buffer
-//                cin.ignore(numeric_limits<streamsize>::max(), '\n'); //ignores the invalid input
-//                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
-//                continue;
-//            }
+            if (cin.fail()) { //Check if the input isn't an alphabet
+                cin.clear(); //clears the input buffer
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); //ignores the invalid input
+                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
+                continue;
+            }
 
                 switch (choice) {
                     case 1: //Easy
                         setDifficultyAlphabet(1);
-                        Instructions("Alphabets","ALPHABET", 5,"Easy");
+                        Instructions("Alphabets","ALPHABET", "5","Easy");
                         isHint = true;
                         playGameAlphabet();
                         break;
                     case 2: //Medium
                         setDifficultyAlphabet(2);
-                        Instructions("Alphabets","ALPHABET", 4,"Medium");
+                        Instructions("Alphabets","ALPHABET", "4","Medium");
                         isHint = false;
                         playGameAlphabet();
                         break;
                     case 3: //Hard
                         setDifficultyAlphabet(3);
-                        Instructions("Alphabets","ALPHABET", 3,"Hard");
+                        Instructions("Alphabets","ALPHABET", "3","Hard");
                         isHint = false;
                         playGameAlphabet();
                         break;
@@ -355,19 +356,20 @@ public:
     @param chances can be an integer from (5, 4, 3)
     @param level   can be a String (easy, medium, hard)
     **/
-    static void Instructions(string type,string type1, int chances, string level) {
-        cout<< R"(
-Guess the )" + type + R"( :
-------------------------------------------
-Instructions:
-1. Guess the )" + type + R"( based on the given range.
-2. You are allowed to make one guess at a time.
-3. Each game has )" + to_string(chances) + R"( chances to guess the SECRET )"+ type1 + R"(.
-4. Once you have used all your chances, you lose the game.
+    static void Instructions(string type,string type1, string chances, string level) {
+    cout <<
+    "Guess the " + type + ":\n"
+    "------------------------------------------\n"
+    "Instructions:\n"
+    "1. Guess the " + type + " based on the given range.\n"
+    "2. You are allowed to make one guess at a time.\n"
+    "3. Each game has " + chances + " chances to guess the SECRET " + type1 + ".\n"
+    "4. Once you have used all your chances, you lose the game.\n"
+    "\n"
+    "Good Luck!\n"
+    + level + ":\n";
+    }
 
-Good Luck!
-)" + level + R"( :
-)";}
 
     /**
     viewHighScoreNumber()
@@ -419,7 +421,7 @@ Good Luck!
 };
 
 int main() {
-    srand(time(nullptr)); // seed for random number generator
+    srand(time(NULL)); // seed for random number generator
     GuessingGame game;
     int choice;
     do {
@@ -435,12 +437,12 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-//        if (cin.fail()) { //Check if the input isn't an alphabet
-//            cin.clear();//clears the input buffer
-//            cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
-//            cout << "Invalid option. Please enter a number between 1 and 5." << endl;
-//            continue;
-//        }
+        if (cin.fail()) { //Check if the input isn't an alphabet
+            cin.clear();//clears the input buffer
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
+            cout << "Invalid option. Please enter a number between 1 and 5." << endl;
+            continue;
+        }
 
         switch (choice) {
             case 1: // Guessing Numbers
