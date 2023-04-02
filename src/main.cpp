@@ -105,7 +105,7 @@ public:
             }
             if (guess == secretNumber) {
                 cout << guess << " Is a correct guess, congrats amigos \U00002705" << endl;
-                cout << "You win! after "<<numTries <<" Tries \U0001F973" << endl;
+                cout << "You win after "<<numTries <<" Tries \U0001F973" << endl;
                 noOfGuessingNumber++;
                 if (noOfGuessingNumber < highScoreNumber || highScoreNumber == 0) {
                     highScoreNumber = noOfGuessingNumber;
@@ -155,12 +155,12 @@ public:
             cout << "===> ";
             cin >> choice;
 
-            if (cin.fail()) {//Check if the input isn't a number
-                cin.clear(); //clears the input buffer
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
-                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
-                continue;
-            }
+//            if (cin.fail()) {//Check if the input isn't a number
+//                cin.clear(); //clears the input buffer
+//                cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
+//                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
+//                continue;
+//            }
 
             switch (choice) {
                 case 1: //Easy
@@ -201,18 +201,18 @@ public:
     void setDifficultyAlphabet(int level) {
         switch (level) {
             case 1: // Easy
-                secretAlphabet = 'A' + rand() % 11;
-                cout<<secretAlphabet<<endl;//🚀
+                secretAlphabet = 'A' + rand() % 10;
+//                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 5;
                 break;
             case 2: // Medium
                 secretAlphabet = 'A' + rand() % 17;
-                cout<<secretAlphabet<<endl;//🚀
+//                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 4;
                 break;
             case 3: // Hard
                 secretAlphabet = 'A' + rand() % 26;
-                cout<<secretAlphabet<<endl;//🚀
+//                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 3;
                 break;
             default:
@@ -257,7 +257,7 @@ public:
                 guess = toupper(guess);
                 if (guess == secretAlphabet) {
                     cout << guess << " is a correct guess,  congrats amigos \U00002705" << endl;
-                    cout << "You win! after "<<numTries <<" Tries \U0001F973" << endl;
+                    cout << "You win after "<<numTries <<" Tries \U0001F973" << endl;
                     noOfGuessingAlphabet++;
                     if (noOfGuessingAlphabet < highScoreAlphabet || highScoreAlphabet == 0) {
                         highScoreAlphabet = noOfGuessingAlphabet;
@@ -309,12 +309,12 @@ public:
             cout << "===> ";
             cin >> choice;
 
-            if (cin.fail()) { //Check if the input isn't an alphabet
-                cin.clear(); //clears the input buffer
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); //ignores the invalid input
-                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
-                continue;
-            }
+//            if (cin.fail()) { //Check if the input isn't an alphabet
+//                cin.clear(); //clears the input buffer
+//                cin.ignore(numeric_limits<streamsize>::max(), '\n'); //ignores the invalid input
+//                cout << "Invalid option. Please enter a number between 1 and 4." << endl;
+//                continue;
+//            }
 
                 switch (choice) {
                     case 1: //Easy
@@ -435,12 +435,12 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        if (cin.fail()) { //Check if the input isn't an alphabet
-            cin.clear();//clears the input buffer
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
-            cout << "Invalid option. Please enter a number between 1 and 5." << endl;
-            continue;
-        }
+//        if (cin.fail()) { //Check if the input isn't an alphabet
+//            cin.clear();//clears the input buffer
+//            cin.ignore(numeric_limits<streamsize>::max(), '\n');//ignores the invalid input
+//            cout << "Invalid option. Please enter a number between 1 and 5." << endl;
+//            continue;
+//        }
 
         switch (choice) {
             case 1: // Guessing Numbers
