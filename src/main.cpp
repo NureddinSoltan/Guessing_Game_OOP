@@ -49,17 +49,14 @@ public:
         switch (level) {
             case 1: // Easy
                 secretNumber = rand() % 15 + 1;
-                cout<<secretNumber<<endl;//🚀
                 maxTries = 5;
                 break;
             case 2: // Medium
                 secretNumber = rand() % 25 + 1;
-                cout<<secretNumber<<endl;//🚀
                 maxTries = 4;
                 break;
             case 3: // Hard
                 secretNumber = rand() % 40 + 1;
-                cout<<secretNumber<<endl; //🚀
                 maxTries = 3;
                 break;
             default:
@@ -105,32 +102,32 @@ public:
                 continue;
             }
             if (guess == secretNumber) {
-                cout << guess << " Is a correct guess, congrats amigos \U00002705" << endl;
-                cout << "You win after "<<numTries <<" Tries \U0001F973" << endl;
+                cout << guess << " Is a correct guess, congrats amigos" << endl;
+                cout << "You win after "<<numTries <<" Tries" << endl;
                 noOfGuessingNumber++;
                 if (noOfGuessingNumber < highScoreNumber || highScoreNumber == 0) {
                     highScoreNumber = noOfGuessingNumber;
-                    cout << "New high score for Numbers Game:" << "("<< highScoreNumber <<")\U0001F3C1"<< endl;
+                    cout << "New high score for Numbers Game:" << "("<< highScoreNumber <<")"<< endl;
                 }
                 cout << ""<< endl;
                 break;
             }
             else if (guess < secretNumber) {
                 if (isHint) {
-                    cout << "WRONG! The secret number is higher \U0000274C." << endl;
+                    cout << "WRONG! The secret number is higher." << endl;
                 }
                 noOfGuessingNumber++;
             }
             else {
                 if (isHint) {
-                    cout << "WRONG! The secret number is Lower \U0000274C." << endl;
+                    cout << "WRONG! The secret number is Lower." << endl;
                 }
                 noOfGuessingNumber++;
             }
             numTries--;
         }
         if (numTries == 0) {
-            cout << "You lost! The secret number was " << secretNumber << " \U0001F979" << endl;
+            cout << "You lost! The secret number was " << secretNumber << "" << endl;
             cout << ""<< endl;
             isLoserNumber = true;
         }
@@ -203,17 +200,14 @@ public:
         switch (level) {
             case 1: // Easy
                 secretAlphabet = 'A' + rand() % 10;
-                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 5;
                 break;
             case 2: // Medium
                 secretAlphabet = 'A' + rand() % 17;
-                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 4;
                 break;
             case 3: // Hard
                 secretAlphabet = 'A' + rand() % 26;
-                cout<<secretAlphabet<<endl;//🚀
                 maxTries = 3;
                 break;
             default:
@@ -257,24 +251,24 @@ public:
             if (isalpha(guess)) {
                 guess = toupper(guess);
                 if (guess == secretAlphabet) {
-                    cout << guess << " is a correct guess,  congrats amigos \U00002705" << endl;
-                    cout << "You win after "<<numTries <<" Tries \U0001F973" << endl;
+                    cout << guess << " is a correct guess,  congrats amigos" << endl;
+                    cout << "You win after "<<numTries <<" Tries" << endl;
                     noOfGuessingAlphabet++;
                     if (noOfGuessingAlphabet < highScoreAlphabet || highScoreAlphabet == 0) {
                         highScoreAlphabet = noOfGuessingAlphabet;
-                        cout << "New high score for Alphabets Game: " << "("<< highScoreAlphabet <<")\U0001F3C1"<< endl;
+                        cout << "New high score for Alphabets Game: " << "("<< highScoreAlphabet <<")"<< endl;
                     }
                     cout << ""<< endl;
                     break;
                 }
                 else if (guess < secretAlphabet) {
                     if (isHint) {
-                        cout << "WRONG! The secret alphabet is higher \U0000274C." << endl;
+                        cout << "WRONG! The secret alphabet is higher." << endl;
                     }
                     noOfGuessingAlphabet++;
                 } else {
                     if (isHint) {
-                        cout << "WRONG! The secret alphabet is Lower \U0000274C." << endl;
+                        cout << "WRONG! The secret alphabet is Lower." << endl;
                     }
                     noOfGuessingAlphabet++;
                 }
@@ -284,7 +278,7 @@ public:
             }
         }
         if (numTries == 0) {
-            cout << "You lost! The secret Alphabet was " << secretAlphabet << " \U0001F979" << endl;
+            cout << "You lost! The secret Alphabet was " << secretAlphabet << "" << endl;
             cout << ""<< endl;
             isLoserAlphabet = true;
         }
@@ -384,8 +378,7 @@ public:
             cout << "Your High Score in Guessing Numbers is: " << highScoreNumber << endl;
         }
         else if (isLoserNumber == true){
-            cout<< "You have play Number but you lost, noob, go and sleep loser" <<endl;
-            cout<< "*Don't forget to drink milk before sleeping" <<endl;//🚀
+            cout<< "You have play Number but you lost." <<endl;
         }
     }
 
@@ -402,8 +395,7 @@ public:
             cout << "Your High Score in Guessing Alphabets is: " << highScoreAlphabet << endl;
         }
         else if (isLoserAlphabet == true){
-            cout<< "You have play Alphabet but you lost, noob, go and sleep loser." <<endl;
-            cout<< "*Don't forget to drink milk before sleeping" <<endl;//🚀
+            cout<< "You have play Alphabet but you lost." <<endl;
 
         }
     }
