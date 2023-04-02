@@ -424,7 +424,7 @@ int main() {
     int choice;
     do {
         cout << "_____________________________________________________________________" << endl;
-        cout << "Welcome to ZAN (the best guessing game in the world),play the game :" << endl;
+        cout << "Welcome to NOSH (the best guessing game in the world),play the game :" << endl;
         cout << "-------------------" << endl;
         cout << "Enter 1 for numbers" << endl;
         cout << "Enter 2 for Alphabets" << endl;
