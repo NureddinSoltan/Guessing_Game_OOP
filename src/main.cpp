@@ -102,9 +102,9 @@ public:
                 continue;
             }
             if (guess == secretNumber) {
-                cout << guess << " Is a correct guess, congrats amigos" << endl;
-                cout << "You win after "<<numTries <<" Tries" << endl;
+                cout << guess << " Is a correct guess, congrats amigos." << endl;
                 noOfGuessingNumber++;
+                cout << "You win! after "<<noOfGuessingNumber <<" Tries" << endl;
                 if (noOfGuessingNumber < highScoreNumber || highScoreNumber == 0) {
                     highScoreNumber = noOfGuessingNumber;
                     cout << "New high score for Numbers Game:" << "("<< highScoreNumber <<")"<< endl;
@@ -252,8 +252,8 @@ public:
                 guess = toupper(guess);
                 if (guess == secretAlphabet) {
                     cout << guess << " is a correct guess,  congrats amigos" << endl;
-                    cout << "You win after "<<numTries <<" Tries" << endl;
                     noOfGuessingAlphabet++;
+                    cout << "You win! after "<< noOfGuessingAlphabet <<" Tries" << endl;
                     if (noOfGuessingAlphabet < highScoreAlphabet || highScoreAlphabet == 0) {
                         highScoreAlphabet = noOfGuessingAlphabet;
                         cout << "New high score for Alphabets Game: " << "("<< highScoreAlphabet <<")"<< endl;
@@ -405,7 +405,7 @@ public:
     A static method prints the credits
     */
     static void viewCredits() {
-        cout << "This Guessing Game was created by ." << endl;
+        cout << "This Guessing Game was created by:" << endl;
         cout << "Name : Noureldien Soltan Abdelrahman Ahmed ID : 210209980 Department : SE" << endl;
         cout << "Name : Shiza Khan ID : 200209395 Department : SE" << endl;
 
